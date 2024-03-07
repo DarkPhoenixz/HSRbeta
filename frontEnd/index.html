@@ -297,6 +297,64 @@
                 </div>
             </div>
             
+            <div class = "organizer" style = "flex-direction: column; align-items: start;">
+                <div class = "mainStats">Main stats</div>
+                <div>
+                    <select name="bodyMain" id="bodyMain">
+                        <option value="" disabled selected>Body</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">Crit Rate</option>
+                        <option value="5">Crit DMG</option>
+                        <option value="6">Out. Healing Bonus</option>
+                        <option value="7">Effect Hit Rate</option>
+                    </select>
+                    <select name="feetMain" id="feetMain">
+                        <option value="" disabled selected>Feet</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">SPD</option>
+                    </select>
+                    <select name="sphereMain" id="sphereMain">
+                        <option value="" disabled selected>Sphere</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">Physical DMG boost</option>
+                        <option value="5">Fire DMG boost</option>
+                        <option value="6">Ice DMG boost</option>
+                        <option value="7">Lightning DMG boost</option>
+                        <option value="8">Wind DMG boost</option>
+                        <option value="9">Quantum DMG boost</option>
+                        <option value="10">Imaginary DMG boost</option>
+                    </select>
+                    <select name="ropeMain" id="ropeMain">
+                        <option value="" disabled selected>Rope</option>
+                        <option value="1">Brake Effect</option>
+                        <option value="2">Energy Regeneration Rate</option>
+                        <option value="3">HP%</option>
+                        <option value="4">Atk%</option>
+                        <option value="5">Def%</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class = "organizer" style = "flex-direction: column; align-items: start;">
+                <div class = "subStats">Sub stats 
+                    <div class = "addButton">
+                        <svg width="100%" height="100%" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 9H17M9 1V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+                </div>
+                
+                <div class = "subOrganizer">
+                    
+                </div>
+
+            </div>
             
         </div>
         <div class = "right">
@@ -318,6 +376,26 @@
                 </div>
             </div>
             <div class = "previewPlaceholder">Seleziona un personaggio per mostrare una anteprima</div>
+            <div class = "code">
+                <div class="codeHeader">
+                    <div>Code preview</div>
+                    <div>
+                        <svg width="auto" height="20px" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.24 1.66651e-07H8.3458C6.58159 -9.83335e-06 5.18418 -2.99066e-05 4.09054 0.1476C2.96501 0.29953 2.05402 0.61964 1.33559 1.34096C0.61717 2.06227 0.29833 2.97692 0.14701 4.10697C-2.97427e-05 5.205 -9.83304e-06 6.60802 1.66955e-07 8.3793V14.2169C1.66955e-07 15.725 0.91995 17.0174 2.22717 17.5592C2.15989 16.6498 2.15994 15.3737 2.16 14.312V9.3976V9.3024C2.15993 8.0207 2.15986 6.91644 2.27828 6.03211C2.40519 5.08438 2.69139 4.17592 3.4253 3.43906C4.15921 2.70219 5.06404 2.41485 6.00798 2.28743C6.88877 2.16854 7.9887 2.1686 9.2652 2.16867L9.36 2.16868H12.24L12.3348 2.16867C13.6113 2.1686 14.7088 2.16854 15.5896 2.28743C15.0627 0.94779 13.7616 1.66651e-07 12.24 1.66651e-07Z" fill="black"/>
+                            <path d="M3.6001 9.3974C3.6001 6.67119 3.6001 5.3081 4.44363 4.46118C5.28716 3.61426 6.64481 3.61426 9.3601 3.61426H12.2401C14.9554 3.61426 16.313 3.61426 17.1566 4.46118C18.0001 5.3081 18.0001 6.6712 18.0001 9.3974V14.2167C18.0001 16.9429 18.0001 18.306 17.1566 19.1529C16.313 19.9998 14.9554 19.9998 12.2401 19.9998H9.3601C6.64481 19.9998 5.28716 19.9998 4.44363 19.1529C3.6001 18.306 3.6001 16.9429 3.6001 14.2167V9.3974Z" fill="black"/>
+                        </svg>
+                            
+                    </div>
+                </div>
+                <div class = "codeMain">
+                    <div class = "lc">Lightcone: <div class = "lcVal"></div></div>
+                    <pre>
+                        <code class = "relics">
+
+                        </code>
+                </pre>
+                </div>
+            </div>
         </div>
     </div>
     <div class = "footer">
