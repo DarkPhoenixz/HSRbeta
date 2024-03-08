@@ -175,19 +175,12 @@ addButton.addEventListener("click", function () {
     organizer.appendChild(sub);
 });
 
-let head = "";
-let hands = "";
-let body = "";
-let feet = "";
-let sphere = "";
-let rope = "";
-let lc = "";
+
 
 let lightconeInput = document.querySelector("#lightcones");
 
 lightconeInput.addEventListener("change", function () {
-    document.querySelector(".lc").style.opacity = "1";
-    document.querySelector(".lcVal").innerHTML = lightconeInput.value; 
+    
 });
 
 let halfSetFlag = false;
@@ -203,7 +196,95 @@ document.querySelector(".switch").addEventListener("click", function () {
     }
 });
 
-document.querySelector("#")
+var codes = [];
+function codeDisp(name, value, el){
+    
+    if (value === "") {
+        return;
+    }
+    if (name === "character") {
+        codes = ["var XHead = new BattleRelic {}\n", "var XHands = new BattleRelic {}\n", "var XBody = new BattleRelic {}\n", "var XFeet = new BattleRelic {}\n", "var XSphere = new BattleRelic {}\n", "var XRope = new BattleRelic {}\n"];
+
+
+        document.querySelector(".lc").style.opacity = "1";
+
+        let charName = el.options[el.selectedIndex].text;
+        charName = charName.replace(" ", "");
+
+        let code = document.querySelector(".relics");
+        code.innerHTML = "";
+
+        for (let i = 0; i < 6; i++) {
+            let sample = codes[i];
+            sample = sample.replace("X", charName);
+            codes[i] = sample;
+            console.log(sample);
+            code.innerHTML += sample + "\n";
+        }
+    }
+
+    if (name === "lightcones") {
+        document.querySelector(".lcVal").innerHTML = value; 
+    }
+
+    if (name === "setFull") {
+        let code = document.querySelector(".relics");
+        code.innerHTML =  " ";
+
+        
+            for (let i = 0; i < 4; i++) {
+                console.log(codes[i].match(/{([^}]*)}/)[1]);
+                //console.log(codes[i]);
+                if (codes[i].includes("Id")) {
+                    let sample = codes[i];
+                    sample = sample.split("= ");
+                    sample[2] = sample[2].split(",");
+                    sample[2][0] = Number(value) + i;
+                    sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3];
+                    console.log(sample);
+                    code.innerHTML += sample + "\n";
+                }
+                else {
+                    let sample = codes[i];
+                    if (i == 0 || i == 1) {
+                        sample = sample.replace("{}",
+"Relic {\n\
+    Id = " + (Number(value) + i) + ",\n\
+    Level = 15,\n\
+    MainAffixId = 1\n\
+}");
+                    }
+                    else {
+                        sample = sample.replace("{}", 
+"Relic {\n\
+    Id = " + (Number(value) + i) + ",\n\
+    Level = 15\n\
+}");
+                        
+                    }
+                    codes[i] = sample;
+                    code.innerHTML += sample + "\n";
+                    console.log(sample);
+                }
+            }
+            code.innerHTML += codes[4] + "\n";
+            code.innerHTML += codes[5] + "\n\n";
+
+    }
+
+    if (name === "setHalf") {
+        document.querySelector(".halfSetVal").innerHTML = value;
+    }
+
+    if (name === "bodyMain") {
+        let val = value;
+        let sample = codes[2];
+    }
+
+    if (name === "feetMain") {}
+    if (name === "sphereMain") {}
+    if (name === "ropeMain") {}
+}
 /*
 var jLHead = new BattleRelic
             {

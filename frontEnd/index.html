@@ -16,7 +16,7 @@
         <div class = "left">
             <div class = "organizer">
                 <div>
-                    <select name="character" id="character">
+                    <select name="character" id="character" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Select a character</option>
                         <optgroup label="4 *">
                             <option value="1001">March 7th</option>
@@ -89,7 +89,7 @@
 
             <div class = "organizer">
                 <div>
-                    <select name="lightcones" id="lightcones">
+                    <select name="lightcones" id="lightcones" onchange="codeDisp(this.name, this.value)">
                         <option value="" disabled selected>Select a lightcone</option>
                         <optgroup label="4 *">
                             <option value="21000">Post-Op Conversation</option>
@@ -196,7 +196,7 @@
 
             <div class = "organizer">
                 <div style = "display: flex; align-items: center; justify-content: space-evenly; flex-direction: row; gap: 10px;">
-                    <select name="setFull" id="setFull">
+                    <select name="setFull" id="setFull" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Select relics</option>
                         <option value="61011">Passerby of Wandering Cloud</option>
 
@@ -235,7 +235,7 @@
                         <option value="61181">Watchmaker, Master of Dream Machinations</option>
                         
                     </select>
-                    <select name="setHalf" id="setHalf" style="display: none;">
+                    <select name="setHalf" id="setHalf" style="display: none;" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Select relics</option>
                         <option value="61011">Passerby of Wandering Cloud</option>
 
@@ -279,7 +279,7 @@
             
             <div class = "organizer">
                 <div>
-                    <select name="2x" id="2x">
+                    <select name="2x" id="2x" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Select ornaments</option>
                         <option value="63015">Space Sealing Station</option>
                         <option value="63025">Fleet of the Ageless</option>
@@ -300,7 +300,7 @@
             <div class = "organizer" style = "flex-direction: column; align-items: start;">
                 <div class = "mainStats">Main stats</div>
                 <div>
-                    <select name="bodyMain" id="bodyMain">
+                    <select name="bodyMain" id="bodyMain" onchange="codeDisp(this.name, this.value)">
                         <option value="" disabled selected>Body</option>
                         <option value="1">Hp%</option>
                         <option value="2">Atk%</option>
@@ -310,14 +310,14 @@
                         <option value="6">Out. Healing Bonus</option>
                         <option value="7">Effect Hit Rate</option>
                     </select>
-                    <select name="feetMain" id="feetMain">
+                    <select name="feetMain" id="feetMain" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Feet</option>
                         <option value="1">Hp%</option>
                         <option value="2">Atk%</option>
                         <option value="3">Def%</option>
                         <option value="4">SPD</option>
                     </select>
-                    <select name="sphereMain" id="sphereMain">
+                    <select name="sphereMain" id="sphereMain" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Sphere</option>
                         <option value="1">Hp%</option>
                         <option value="2">Atk%</option>
@@ -330,7 +330,7 @@
                         <option value="9">Quantum DMG boost</option>
                         <option value="10">Imaginary DMG boost</option>
                     </select>
-                    <select name="ropeMain" id="ropeMain">
+                    <select name="ropeMain" id="ropeMain" onchange="codeDisp(this.name, this.value, this)">
                         <option value="" disabled selected>Rope</option>
                         <option value="1">Brake Effect</option>
                         <option value="2">Energy Regeneration Rate</option>
@@ -389,11 +389,7 @@
                 </div>
                 <div class = "codeMain">
                     <div class = "lc">Lightcone: <div class = "lcVal"></div></div>
-                    <pre>
-                        <code class = "relics">
-
-                        </code>
-                </pre>
+                    <pre><code class = "relics"></code></pre>
                 </div>
             </div>
         </div>
