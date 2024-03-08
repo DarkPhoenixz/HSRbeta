@@ -12,12 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 character = document.querySelector("#character");
-console.log(character);
 
 character.addEventListener("change", function () {
     document.querySelector("img").src = baseSrc + character.value + baseSrcTerminator;
     displayAll();
-    console.log(baseSrc + character.value + baseSrcTerminator);
 });
 
 
@@ -26,7 +24,6 @@ let switchButton = document.querySelector(".switch");
 switchButton.addEventListener("click", function () {
     let button = document.querySelector(".switchButton");
     let style = window.getComputedStyle(button);
-    console.log(style.left);
     if (style.left == "0px") {
         button.style.left = "25px";
         document.querySelector("#setHalf").style.display = "block";
@@ -67,8 +64,6 @@ function displayAll(){
     code.style.display = "flex";
     document.querySelector(".preview").style.display = "flex";
     setTimeout(() => {
-        console.log(document.querySelector(".preview"));
-        
         document.querySelector(".preview").style.opacity = "1";
     }, 200);
 }
@@ -100,8 +95,9 @@ fetch('./assets/data/steps.json')
 
 let addButton = document.querySelector(".addButton");
 let selectCount = "a";
-let subCount = 0;
-addButton.addEventListener("click", function () {
+let subCount = 1;
+addButton.addEventListener("click", function (e) {
+    e.stopPropagation();
     let currentOpt = 0;
     if (selectCount === "m") {
         return;
@@ -120,20 +116,18 @@ addButton.addEventListener("click", function () {
     option.disabled = true;
     option.selected = true;
     select.appendChild(option);
-
     Object.keys(stepsJson).forEach((step) => {
         let option = document.createElement("option");
         option.value = subCount;
         option.innerHTML = step;
         select.appendChild(option);
-       
+        subCount++;
     });
     select.addEventListener("change", function () {
         currentOpt = select.options[select.selectedIndex].text;
-        console.log(currentOpt);
         let value = slider.value * stepsJson[currentOpt];
-        console.log(stepsJson[currentOpt]);
         val.innerHTML = value.toFixed(2);
+        codeDisp(this.name, this.value, this);
     });
     sub.appendChild(select);
 
@@ -162,10 +156,12 @@ addButton.addEventListener("click", function () {
             return;
         }
         let value = slider.value * stepsJson[currentOpt];
-        console.log(stepsJson[currentOpt]);
         val.innerHTML = value.toFixed(2); 
-        subCount++;
+        
+
+        codeDisp("slider", this.value, this);
     });
+    
     value.appendChild(val);
     slidecontainer.appendChild(value);
 
@@ -202,10 +198,10 @@ function codeDisp(name, value, el){
     if (value === "") {
         return;
     }
+
     if (name === "character") {
         codes = ["var XHead = new BattleRelic {}\n", "var XHands = new BattleRelic {}\n", "var XBody = new BattleRelic {}\n", "var XFeet = new BattleRelic {}\n", "var XSphere = new BattleRelic {}\n", "var XRope = new BattleRelic {}\n"];
-
-
+        document.querySelectorAll("select").forEach((el, index) => { if (index == 0) return; el.selectedIndex = 0; document.querySelector(".subOrganizer").innerHTML = ""; selectCount = "a";});
         document.querySelector(".lc").style.opacity = "1";
 
         let charName = el.options[el.selectedIndex].text;
@@ -218,7 +214,6 @@ function codeDisp(name, value, el){
             let sample = codes[i];
             sample = sample.replace("X", charName);
             codes[i] = sample;
-            console.log(sample);
             code.innerHTML += sample + "\n";
         }
     }
@@ -229,89 +224,243 @@ function codeDisp(name, value, el){
 
     if (name === "setFull") {
         let code = document.querySelector(".relics");
-        code.innerHTML =  " ";
+        code.innerHTML =  "";
 
         
-            for (let i = 0; i < 4; i++) {
-                console.log(codes[i].match(/{([^}]*)}/)[1]);
-                //console.log(codes[i]);
-                if (codes[i].includes("Id")) {
-                    let sample = codes[i];
-                    sample = sample.split("= ");
-                    sample[2] = sample[2].split(",");
-                    sample[2][0] = Number(value) + i;
-                    sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3];
-                    console.log(sample);
-                    code.innerHTML += sample + "\n";
-                }
-                else {
-                    let sample = codes[i];
-                    if (i == 0 || i == 1) {
-                        sample = sample.replace("{}",
+        for (let i = 0; i < 4; i++) {
+            //console.log(codes[i].match(/{([^}]*)}/)[1]);
+            //console.log(codes[i]);
+            if (codes[i].includes("Id")) {
+                let sample = codes[i];
+                sample = sample.split("= ");
+                
+                sample[2] = sample[2].split(",");
+                
+                sample[2][0] = Number(value) + i;
+                
+                if (i == 0 || i == 1) sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3] + "= " + sample[4] ;
+                else sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3] ;
+                codes[i] = sample;                
+            }
+
+            else {
+                let sample = codes[i];
+                if (i == 0 || i == 1) {
+                    sample = sample.replace("{}",
 "Relic {\n\
     Id = " + (Number(value) + i) + ",\n\
     Level = 15,\n\
-    MainAffixId = 1\n\
+    MainAffixId = 1,\n\
+    SubAffixLists = {}\n\
 }");
-                    }
-                    else {
-                        sample = sample.replace("{}", 
+                }
+                else {
+                    sample = sample.replace("{}", 
 "Relic {\n\
     Id = " + (Number(value) + i) + ",\n\
     Level = 15\n\
 }");
                         
-                    }
-                    codes[i] = sample;
-                    code.innerHTML += sample + "\n";
-                    console.log(sample);
                 }
+                codes[i] = sample;
             }
-            code.innerHTML += codes[4] + "\n";
-            code.innerHTML += codes[5] + "\n\n";
-
+        }
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });    
     }
 
     if (name === "setHalf") {
         document.querySelector(".halfSetVal").innerHTML = value;
     }
 
-    if (name === "bodyMain") {
-        let val = value;
-        let sample = codes[2];
+    if (name === "ornaments") {
+        let code = document.querySelector(".relics");
+        code.innerHTML =  "";
+
+        for (let i = 4; i < 6; i++) {
+            if (codes[i].includes("Id")) {
+                let sample = codes[i];
+                sample = sample.split("= ");
+                
+                sample[2] = sample[2].split(",");
+                
+                sample[2][0] = Number(value) + (i -4);
+               
+                if (i == 0 || i == 1) sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3] + "= " + sample[4];
+                else sample = sample[0] + "= " + sample[1] + "= " + sample[2][0] + "," + sample[2][1] + "= " + sample[3];
+                codes[i] = sample;
+            }
+
+            else {
+                let sample = codes[i];
+                sample = sample.replace("{}", 
+"Relic {\n\
+    Id = " + (Number(value) + (i - 4)) + ",\n\
+    Level = 15\n\
+}");       
+                codes[i] = sample;
+            }
+        }
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+        
     }
 
-    if (name === "feetMain") {}
-    if (name === "sphereMain") {}
-    if (name === "ropeMain") {}
+    if (name === "bodyMain") {
+        let sample = codes[2];
+        if (sample.includes("MainAffixId")) {
+            sample = sample.split("= ");
+            sample[4] = sample[4].split("\n");
+            sample[4][0] = value;
+            sample[4] = sample[4].join("\n");
+            sample = sample.join("= ");
+            codes[2] = sample;
+            console.log(sample);
+        }
+        else {
+            sample = sample.split("\n");
+            sample[2] = sample[2].concat(",\n\
+    MainAffixId = " + value + ",\n\    SubAffixLists = {}");
+            sample = sample.join("\n");
+            codes[2] = sample;
+        
+               
+        }
+        document.querySelector(".relics").innerHTML = "";
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
+
+    if (name === "feetMain") {
+        let sample = codes[3];
+        if (sample.includes("MainAffixId")) {
+            sample = sample.split("= ");
+            sample[4] = sample[4].split("\n");
+            sample[4][0] = value;
+            sample[4] = sample[4].join("\n");
+            sample = sample.join("= ");
+            codes[3] = sample;
+            console.log(sample);
+        }
+        else {
+        sample = sample.split("\n");
+        sample[2] = sample[2].concat(",\n\
+    MainAffixId = " + value + ",\n\    SubAffixLists = {}");
+        sample = sample.join("\n");
+        codes[3] = sample;
+        console.log(sample);
+        }
+
+        document.querySelector(".relics").innerHTML = "";
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
+    if (name === "sphereMain") {
+        let sample = codes[4];
+        if (sample.includes("MainAffixId")) {
+            sample = sample.split("= ");
+            sample[4] = sample[4].split("\n");
+            sample[4][0] = value;
+            sample[4] = sample[4].join("\n");
+            sample = sample.join("= ");
+            codes[4] = sample;
+            console.log(sample);
+        }
+        else {
+        sample = sample.split("\n");
+        sample[2] = sample[2].concat(",\n\
+    MainAffixId = " + value + ",\n\    SubAffixLists = {}");
+        sample = sample.join("\n");
+        codes[4] = sample;
+        console.log(sample);
+        }
+
+        document.querySelector(".relics").innerHTML = "";
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
+    if (name === "ropeMain") {
+        let sample = codes[5];
+        if (sample.includes("MainAffixId")) {
+            sample = sample.split("= ");
+            sample[4] = sample[4].split("\n");
+            sample[4][0] = value;
+            sample[5] = sample[4].join("\n");
+            sample = sample.join("= ");
+            codes[3] = sample;
+            console.log(sample);
+        }
+        else {
+        sample = sample.split("\n");
+        sample[2] = sample[2].concat(",\n\
+    MainAffixId = " + value + ",\n\    SubAffixLists = {}");
+        sample = sample.join("\n");
+        codes[5] = sample;
+        console.log(sample);
+        }
+
+        document.querySelector(".relics").innerHTML = "";
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
+    
+    console.log(name);
+    if (name === "slider") {
+        let code = document.querySelector(".relics");
+        code.innerHTML =  "";
+        if (value === "") {
+            return;
+        }
+        if (codes[0].includes("Step")) {
+            let sample = codes[0];
+            sample = sample.split("= ");
+            sample[8] = sample[8].split("\n");
+            sample[8][0] = value;
+            sample[8] = sample[8].join("\n");
+            sample = sample.join("= ");
+            codes[0] = sample;
+            console.log(sample);
+        }
+        else { 
+            let sample = codes[0];
+            let id = el.parentElement.previousElementSibling.options[el.parentElement.previousElementSibling.selectedIndex].value;
+            sample = sample.replace("{}", 
+"{\n\
+        new RelicAffix = {\n\
+            AffixId = " + id + ",\n\
+            Step = " + value + "\n\
+        }");
+            codes[0] = sample; 
+        }       
+
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
+
+    if (name.includes("sub")) {
+        let code = document.querySelector(".relics");
+        code.innerHTML =  "";
+
+        if (codes[0].includes("Step")) {
+            let sample = codes[0];
+            sample = sample.split("= ");
+            sample[7] = sample[7].split(",");
+            sample[7][0] = value;
+            sample[7] = sample[7].join(",");
+            sample = sample.join("= ");
+            codes[0] = sample;
+            
+        }
+
+        codes.forEach((code) => {
+            document.querySelector(".relics").innerHTML += code + "\n";
+        });
+    }
 }
-/*
-var jLHead = new BattleRelic
-            {
-                Id = 61041,
-                Level = 15,
-                MainAffixId = 1,
-                SubAffixLists = {
-                    new RelicAffix
-                    {
-                        AffixId = 8,
-                        Step = 60
-                    },
-                    new RelicAffix
-                    {
-                        AffixId = 9,
-                        Step = 120
-                    },
-                    new RelicAffix
-                    {
-                        AffixId = 7,
-                        Step = 60
-                    },
-                    new RelicAffix
-                    {
-                        AffixId = 5,
-                        Step = 30
-                    }
-                }
-            };
-                */
