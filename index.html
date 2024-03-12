@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aldrich" />
+</head>
+<body>
+    <div class = "header">
+        <div>HSR Builder</div>
+    </div>
+    <div class = "main">
+        <div class = "left">
+            <div class = "organizer">
+                <div>
+                    <select name="character" id="character" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Select a character</option>
+                        <optgroup label="4 *">
+                            <option value="1001">March 7th</option>
+                            <option value="1002">Dan Heng</option>
+                            <option value="1008">Arlan</option>
+                            <option value="1009">Asta</option>
+                            <option value="1013">Herta</option>
+                            <option value="1103">Serval</option>
+                            <option value="1105">Natasha</option>
+                            <option value="1106">Pela</option>
+                            <option value="1108">Sampo</option>
+                            <option value="1109">Hook</option>
+                            <option value="1110">Lynx</option>
+                            <option value="1111">Luka</option>
+                            <option value="1201">Qingque</option>
+                            <option value="1202">Tingyun</option>
+                            <option value="1206">Sushang</option>
+                            <option value="1207">Yukong</option>
+                            <option value="1210">Guinaifen</option>
+                            <option value="1214">Xueyi</option>
+                            <option value="1215">Hanya</option>
+                            <option value="1312">Misha</option>
+                            <option value="1301">Gallagher</option>
+                        </optgroup>
+
+                        <optgroup label="5 *">
+                            <option value="8001">Trailblazer Physical • The Destruction</option>
+                            <option value="8003">Trailblazer Fire • The Preservation</option>
+                            <option value="1003">Himeko</option>
+                            <option value="1104">Gepard</option>
+                            <option value="1004">Welt</option>
+                            <option value="1005">Kafka</option>
+                            <option value="1006">Silver Wolf</option>
+                            <option value="1101">Bronya</option>
+                            <option value="1102">Seele</option>
+                            <option value="1107">Clara</option>
+                            <option value="1112">Topaz & Numby</option>
+                            <option value="1203">Luocha</option>
+                            <option value="1204">Jing Yuan</option>
+                            <option value="1205">Blade</option>
+                            <option value="1208">Fu Xuan</option>
+                            <option value="1209">Yanqing</option>
+                            <option value="1211">Bailu</option>
+                            <option value="1212">Jingliu</option>
+                            <option value="1213">Dan Heng • Imbibitor Lunae</option>
+                            <option value="1217">HuoHuo</option>
+                            <option value="1302">Argenti</option>
+                            <option value="1303">Ruan Mei</option>
+                            <option value="1304">Aventurine</option>
+                            <option value="1305">Dr. Ratio</option>
+                            <option value="1306">Sparkle</option>
+                            <option value="1307">Black Swan</option>
+                            <option value="1308">Acheron</option>
+
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <select name="eidolons" id="eidolons">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select> 
+                </div>
+            </div>
+
+            <div class = "organizer">
+                <div>
+                    <select name="lightcones" id="lightcones" onchange="codeDisp(this.name, this.value)">
+                        <option value="" disabled selected>Select a lightcone</option>
+                        <optgroup label="4 *">
+                            <option value="21000">Post-Op Conversation</option>
+                            <option value="21001">Good Night and Sleep Well</option>
+                            <option value="21002">Day One of My New Life</option>
+                            <option value="21003">Only Silence Remains</option>
+                            <option value="21004">Memories of the Past</option>
+                            <option value="21005">The Moles Welcome You</option>
+                            <option value="21006">The Birth of the Self</option>
+                            <option value="21007">Shared Feeling</option>
+                            <option value="21008">Eyes of the Prey</option>
+                            <option value="21009">Landau's Choice</option>
+                            <option value="21010">Swordplay</option>
+                            <option value="21011">Planetary Rendezvous</option>
+                            <option value="21012">A Secret Vow</option>
+                            <option value="21013">Make the World Clamor</option>
+                            <option value="21014">Perfect Timing</option>
+                            <option value="21015">Resolution Shines As Pearls of Sweat</option>
+                            <option value="21016">Trend of the Universal Market</option>
+                            <option value="21017">Subscribe for More!</option>
+                            <option value="21018">Dance! Dance! Dance!</option>
+                            <option value="21019">Under the Blue Sky</option>
+                            <option value="21020">Geniuses' Repose</option>
+                            <option value="21021">Quid Pro Quo</option>
+                            <option value="21022">Fermata</option>
+                            <option value="21023">We Are Wildfire</option>
+                            <option value="21024">River Flows in Spring</option>
+                            <option value="21025">Past and Future</option>
+                            <option value="21026">Woof! Walk Time!</option>
+                            <option value="21027">The Seriousness of Breakfast</option>
+                            <option value="21028">Warmth Shortens Cold Nights</option>
+                            <option value="21029">We Will Meet Again</option>
+                            <option value="21030">This Is Me!</option>
+                            <option value="21031">Return to Darkness</option>
+                            <option value="21032">Carve the Moon, Weave the Clouds</option>
+                            <option value="21033">Nowhere to Run</option>
+                            <option value="21034">Today Is Another Peaceful Day</option>
+                            <option value="21035">What Is Real?</option>
+                            <option value="21036">Dreamville Adventure</option>
+                            <option value="21037">Final Victor</option>
+                            <option value="21038">Flames Afar</option>
+                            <option value="21039">Destiny's Threads Forewoven</option>
+                            <option value="21040">The Day The Cosmos Fell</option>
+                            <option value="21041">It's Showtime</option>
+                            <option value="21042">Indelible Promise</option>
+                            <option value="22000">Before the Tutorial Mission Starts</option>
+                            <option value="22001">Hey, Over Here</option>
+                            <option value="21043">Concert for Two</option>
+                        </optgroup>
+                        <optgroup label="5 *">
+                            <option value="23000">Night on the Milky Way</option>
+                            <option value="23001">In the Night</option>
+                            <option value="23002">Something Irreplaceable</option>
+                            <option value="23003">But the Battle Isn't Over</option>
+                            <option value="23004">In the Name of the World</option>
+                            <option value="23005">Moment of Victory</option>
+                            <option value="23006">Patience Is All You Need</option>
+                            <option value="23007">Incessant Rain</option>
+                            <option value="23008">Echoes of the Coffin</option>
+                            <option value="23009">The Unreachable Side</option>
+                            <option value="23010">Before Dawn</option>
+                            <option value="23011">She Already Shut Her Eyes</option>
+                            <option value="23012">Sleep Like the Dead</option>
+                            <option value="23013">Time Waits for No One</option>
+                            <option value="23014">I Shall Be My Own Sword</option>
+                            <option value="23015">Brighter Than the Sun</option>
+                            <option value="23016">Worrisome, Blissful</option>
+                            <option value="23017">Night of Fright</option>
+                            <option value="23018">An Instant Before A Gaze</option>
+                            <option value="23019">Past Self in Mirror</option>
+                            <option value="23020">Baptism of Pure Thought</option>
+                            <option value="23021">Earthly Escapade</option>
+                            <option value="23022">Reforged Remembrance</option>
+                            <option value="24000">On the Fall of an Aeon</option>
+                            <option value="24001">Cruising in the Stellar Sea</option>
+                            <option value="24002">Texture of Memories</option>
+                            <option value="24003">Solitary Healing</option>
+                            <option value="23023">Inherently Unjust Destiny</option>
+                            <option value="23024">Along the Passing Shore</option>
+                        </optgroup>
+
+                    </select>
+                </div>
+                <div>
+                    <select name="superimpose" id="superimpose">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>            
+                </div>
+            </div>
+
+            <div class = "organizerSwitch">
+                <div style = "display: flex; align-items: center; justify-content: space-evenly; flex-direction: row; gap: 10px;">
+                    <div style = " font-size: calc(10px + 1vh);">Full set</div>
+                    <div class = "switch">
+                        <div class = "switchButton"></div>
+                    </div>
+                    <div style = " font-size: calc(10px + 1vh);">Half set</div>
+                </div>
+            </div>
+
+            <div class = "organizer">
+                <div style = "display: flex; align-items: center; justify-content: space-evenly; flex-direction: row; gap: 10px;">
+                    <select name="setFull" id="setFull" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Select relics</option>
+                        <option value="61011">Passerby of Wandering Cloud</option>
+
+                        <option value="61021">Musketeer of Wild Wheat</option>
+
+                        <option value="61031">Knight of Purity Palace</option>
+
+                        <option value="61041">Hunter of Glacial Forest</option>
+                        
+                        <option value="61051">Champion of Streetwise Boxing</option>
+                        
+                        <option value="61061">Guard of Wuthering Snow</option>
+                        
+                        <option value="61071">Firesmith of Lava-Forgin</option>
+                        
+                        <option value="61081">Genius of Brilliant Stars</option>
+                        
+                        <option value="61091">Band of Sizzling Thunder</option>
+                        
+                        <option value="61101">Eagle of Twilight Line</option>
+                        
+                        <option value="61111">Thief of Shooting Meteor</option>
+                        
+                        <option value="61121">Wastelander of Banditry Desert</option>
+                        
+                        <option value="61131">Longevous Disciple</option>
+                        
+                        <option value="61141">Messenger Traversing Hackerspace</option>
+                        
+                        <option value="61151">The Ashblazing Grand Duke</option>
+                        
+                        <option value="61161">Prisoner in Deep Confinement</option>
+                        
+                        <option value="61171">Pioneer Diver of Dead Waters</option>
+                        
+                        <option value="61181">Watchmaker, Master of Dream Machinations</option>
+                        
+                    </select>
+                    <select name="setHalf" id="setHalf" style="display: none;" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Select relics</option>
+                        <option value="61011">Passerby of Wandering Cloud</option>
+
+                        <option value="61021">Musketeer of Wild Wheat</option>
+
+                        <option value="61031">Knight of Purity Palace</option>
+
+                        <option value="61041">Hunter of Glacial Forest</option>
+                        
+                        <option value="61051">Champion of Streetwise Boxing</option>
+                        
+                        <option value="61061">Guard of Wuthering Snow</option>
+                        
+                        <option value="61071">Firesmith of Lava-Forgin</option>
+                        
+                        <option value="61081">Genius of Brilliant Stars</option>
+                        
+                        <option value="61091">Band of Sizzling Thunder</option>
+                        
+                        <option value="61101">Eagle of Twilight Line</option>
+                        
+                        <option value="61111">Thief of Shooting Meteor</option>
+                        
+                        <option value="61121">Wastelander of Banditry Desert</option>
+                        
+                        <option value="61131">Longevous Disciple</option>
+                        
+                        <option value="61141">Messenger Traversing Hackerspace</option>
+                        
+                        <option value="61151">The Ashblazing Grand Duke</option>
+                        
+                        <option value="61161">Prisoner in Deep Confinement</option>
+                        
+                        <option value="61171">Pioneer Diver of Dead Waters</option>
+                        
+                        <option value="61181">Watchmaker, Master of Dream Machinations</option>
+                        
+                    </select>
+                </div>
+            </div>
+            
+            <div class = "organizer">
+                <div>
+                    <select name="ornaments" id="ornaments" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Select ornaments</option>
+                        <option value="63015">Space Sealing Station</option>
+                        <option value="63025">Fleet of the Ageless</option>
+                        <option value="63035">Pan-Cosmic Commercial Enterprise</option>
+                        <option value="63045">Belobog of the Architects</option>
+                        <option value="63055">Celestial Differentiator</option>
+                        <option value="63065">Inert Salsotto</option>
+                        <option value="63075">Talia: Kingdom of Banditry</option>
+                        <option value="63085">Sprightly Vonwacq</option>
+                        <option value="63095">Rutilant Arena</option>
+                        <option value="63105">Broken Keel</option>
+                        <option value="63115">Firmament Frontline: Glamoth</option>
+                        <option value="63125">Penacony, Land of the Dreams</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class = "organizer" style = "flex-direction: column; align-items: start;">
+                <div class = "mainStats">Main stats</div>
+                <div>
+                    <select name="bodyMain" id="bodyMain" onchange="codeDisp(this.name, this.value)">
+                        <option value="" disabled selected>Body</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">Crit Rate</option>
+                        <option value="5">Crit DMG</option>
+                        <option value="6">Out. Healing Bonus</option>
+                        <option value="7">Effect Hit Rate</option>
+                    </select>
+                    <select name="feetMain" id="feetMain" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Feet</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">SPD</option>
+                    </select>
+                    <select name="sphereMain" id="sphereMain" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Sphere</option>
+                        <option value="1">Hp%</option>
+                        <option value="2">Atk%</option>
+                        <option value="3">Def%</option>
+                        <option value="4">Physical DMG boost</option>
+                        <option value="5">Fire DMG boost</option>
+                        <option value="6">Ice DMG boost</option>
+                        <option value="7">Lightning DMG boost</option>
+                        <option value="8">Wind DMG boost</option>
+                        <option value="9">Quantum DMG boost</option>
+                        <option value="10">Imaginary DMG boost</option>
+                    </select>
+                    <select name="ropeMain" id="ropeMain" onchange="codeDisp(this.name, this.value, this)">
+                        <option value="" disabled selected>Rope</option>
+                        <option value="1">Brake Effect</option>
+                        <option value="2">Energy Regeneration Rate</option>
+                        <option value="3">HP%</option>
+                        <option value="4">Atk%</option>
+                        <option value="5">Def%</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class = "organizer" style = "flex-direction: column; align-items: start;">
+                <div class = "subStats">Sub stats 
+                    <div class = "addButton">
+                        <svg width="100%" height="100%" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 9H17M9 1V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+                </div>
+                
+                <div class = "subOrganizer">
+                    
+                </div>
+
+            </div>
+            
+        </div>
+        <div class = "right">
+            <div class = "preview">
+                <div class = "displayCharacter">
+                    <img src="" alt="">
+                </div>
+
+                <div class = "displayLightcone">
+                    <img src="" alt="">
+                </div>
+
+                <div class = "display4x">
+                    <img src="" alt="">
+                </div>
+
+                <div class = "display2x">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class = "previewPlaceholder">Seleziona un personaggio per mostrare una anteprima</div>
+            <div class = "code">
+                <div class="codeHeader">
+                    <div>Code preview</div>
+                    <div>
+                        <svg width="auto" height="20px" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.24 1.66651e-07H8.3458C6.58159 -9.83335e-06 5.18418 -2.99066e-05 4.09054 0.1476C2.96501 0.29953 2.05402 0.61964 1.33559 1.34096C0.61717 2.06227 0.29833 2.97692 0.14701 4.10697C-2.97427e-05 5.205 -9.83304e-06 6.60802 1.66955e-07 8.3793V14.2169C1.66955e-07 15.725 0.91995 17.0174 2.22717 17.5592C2.15989 16.6498 2.15994 15.3737 2.16 14.312V9.3976V9.3024C2.15993 8.0207 2.15986 6.91644 2.27828 6.03211C2.40519 5.08438 2.69139 4.17592 3.4253 3.43906C4.15921 2.70219 5.06404 2.41485 6.00798 2.28743C6.88877 2.16854 7.9887 2.1686 9.2652 2.16867L9.36 2.16868H12.24L12.3348 2.16867C13.6113 2.1686 14.7088 2.16854 15.5896 2.28743C15.0627 0.94779 13.7616 1.66651e-07 12.24 1.66651e-07Z" fill="black"/>
+                            <path d="M3.6001 9.3974C3.6001 6.67119 3.6001 5.3081 4.44363 4.46118C5.28716 3.61426 6.64481 3.61426 9.3601 3.61426H12.2401C14.9554 3.61426 16.313 3.61426 17.1566 4.46118C18.0001 5.3081 18.0001 6.6712 18.0001 9.3974V14.2167C18.0001 16.9429 18.0001 18.306 17.1566 19.1529C16.313 19.9998 14.9554 19.9998 12.2401 19.9998H9.3601C6.64481 19.9998 5.28716 19.9998 4.44363 19.1529C3.6001 18.306 3.6001 16.9429 3.6001 14.2167V9.3974Z" fill="black"/>
+                        </svg>
+                            
+                    </div>
+                </div>
+                <div class = "codeMain">
+                    <div class = "lc">Lightcone: <div class = "lcVal"></div></div>
+                    <pre><code class = "relics"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "footer">
+
+    </div>
+    <!-- JS -->
+    <script src="assets/js/script.js"></script>
+    
+</body>
+</html>
