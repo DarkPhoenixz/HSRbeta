@@ -1,0 +1,374 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: calc(20px + 2vh);
+    font-family: Aldrich;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track-piece {
+    background-color: #232323;
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+
+body{
+    background-color: #232323;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 80%;
+    width: 100%;
+}
+
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    border-right: 1px solid #555;
+    padding: 10px;
+}
+
+.left > div {
+    margin: 10px;
+}
+
+.organizer:first{
+    opacity: 1;
+}
+
+.organizer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.organizerSwitch{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.switch{
+    width: 50px;
+    height: 25px;
+    background-color: #555;
+    border-radius: 25px;
+    transition: all 0.5s ease-in-out;
+}
+
+.switchButton{
+    width: 25px;
+    height: 25px;
+    background-color: #00ddff;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+    
+    position: relative;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+}
+
+
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+
+}
+
+.preview{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.previewPlaceholder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+select{
+    background-color: #232323;
+    border: 1px solid #555;
+    border-radius: 15px;
+    width: auto;
+    padding: 8px;
+    max-width: 350px;
+    font-size: calc(18px + 1vh);
+    transition: all 0.5s ease-in-out;
+}
+
+option{
+    font-size: calc(16px + 1vh);
+    
+}
+
+
+optgroup {
+    font-size: calc(10px + 1vh);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+img {
+    height: 250px;
+}
+
+.mainStats{
+    font-size: calc(10px + 1vh);
+}
+
+#bodyMain, #feetMain, #sphereMain, #ropeMain {
+    font-size: calc(5px + 1vh);
+}
+
+#bodyMain > option, #feetMain > option, #sphereMain > option, #ropeMain > option{
+    font-size: calc(5px + 1vh);
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+}
+
+.sub{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subOrganizer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 110%;
+}
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 15px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    border-radius: 10px;
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: #00ddff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 10px;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #00ddff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  .value{
+    font-size: calc(8px + 1vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .val{
+    font-size: calc(8px + 1vh);
+  }
+  
+
+  .sub > select {
+    font-size: calc(5px + 1vh);
+  }
+  .sub > select > option {
+    font-size: calc(5px + 1vh);
+  }
+
+  .addButton{
+    background-color: #00ddff;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(10px + 1vh);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .subStats{
+    font-size: calc(10px + 1vh);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .code{
+    width: 95%;
+    height: 50%;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #555;
+  }
+
+  .codeHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    height: 30px;
+    background-color: #888;
+    width: 100%;
+    padding: 8px;
+    
+  }
+  .codeHeader > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: calc(10px + 1vh);
+  }
+
+    .codeMain{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: start;
+        flex-direction: column;
+        gap: 10%;
+        height: calc(100% - 30px);
+        overflow: scroll;
+        width: 100%;
+    }
+    .lc{
+        font-size: calc(10px + 1vh);
+        height: 10%;
+        position: relative;
+        top: 0px;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .lcVal{
+        font-size: calc(10px + 1vh);
+    }
+    .relics {
+        font-size: calc(10px + 1vh);
+        font-family: 'Courier New', Courier, monospace;
+    }
+    pre{
+        font-size: calc(10px + 1vh);
+        color: white;
+        height: 80%;
+    }
